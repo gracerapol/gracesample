@@ -1,8 +1,45 @@
+<!DOCTYPE html>
 <html>
-	<head>
-	<title>Gitt</title>
-		</head>
-	<body>
-	<h1>This is my git project
-		</h1></body>
+<head>
+    <meta charset="UTF-8">
+    <title>Future Value Calculator</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ 
+    <link rel="stylesheet" href="futurevalue.css">
+    <script src="futurevalue.js"></script>
+	 
+	</script>
+</head>
+
+<body>
+    <main>
+	
+	<div id="accordion">
+        <h1>Future Value Calculator</h1>
+		<h1>This is my Grace's git project
+		</h1>
+        
+        <label for="investment">Total Investment:</label>
+        <input type="text" id="investment">
+		<span id="investment">*</span><br>
+        
+        <label for="rate">Annual Interest Rate:</label>
+        <input type="text" id="annual_rate">
+		<span id="rate">*</span><br>
+        
+        <label for="years">Number of Years:</label>
+        <input type="text" id="years">
+		<span id="years">*</span><br>
+        
+        <label for="future_value">Future Value:</label>
+        <input type="text" id="future_value" disabled><br>
+        
+        <label>&nbsp;</label>
+        <input type="button" id="calculate" value="Calculate"><br>      
+		<label>&nbsp;</label>
+        <input type="button" id="clear" value="Clear Values"><br>   
+		</div>
+		
+    </main>
+</body>
 </html>
