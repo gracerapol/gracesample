@@ -1,0 +1,7 @@
+C:\Users\rapol\source\repos\GradeCal\GradeCal\bin\Debug\GradeCal.exe.config
+C:\Users\rapol\source\repos\GradeCal\GradeCal\bin\Debug\GradeCal.exe
+C:\Users\rapol\source\repos\GradeCal\GradeCal\bin\Debug\GradeCal.pdb
+C:\Users\rapol\source\repos\GradeCal\GradeCal\obj\Debug\GradeCal.csprojAssemblyReference.cache
+C:\Users\rapol\source\repos\GradeCal\GradeCal\obj\Debug\GradeCal.csproj.CoreCompileInputs.cache
+C:\Users\rapol\source\repos\GradeCal\GradeCal\obj\Debug\GradeCal.exe
+C:\Users\rapol\source\repos\GradeCal\GradeCal\obj\Debug\GradeCal.pdb
