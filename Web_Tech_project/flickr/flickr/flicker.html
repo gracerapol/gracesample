@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Flickr</title>
+    <link href="main.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="js/java.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+ <script type="text/javascript" src="js/jquery.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+ 
+	<script>
+	$(document).ready(function(){
+			var url = "http://api.flickr.com/services/feeds/photos_public.gne?" +
+	    			  "format=json&jsoncallback=?&tags=fall,canada";
+	
+			$.getJSON(url, function(data){
+			var pageTitle =data.title;
+			$("#pgTitle").html(pageTitle);
+			
+				var html = "";
+				$.each(data.items, function(i, item){
+					html += "<h2>" + item.title + "</h2>";	
+					html += "<img src=" + item.media.m  + ">";
+					
+					html += "<p>Tags:"+ item.tags+"</p>";
+					html += "<p>Date Taken:"+ item.date_taken.substring(0,10)+"</p>";
+					html += "<p></p>";
+				});
+				$("#photos").html(html);
+			});          
+        });
+    </script>
+</head>
+
+<body>
+<main>
+	
+	
+				<!-- Slider -->
+	<article class="slider">
+		<section class="slide">
+		<div id="photos">
+			
+
+			<div class="slide-content">
+				<p class="slide-title" id="pgTitle"></p>
+			</div>
+		</section>
+
+		<section class="slide">
+		<div id="photos">
+			
+
+			<div class="slide-content">
+				<p class="slide-title" id="pgTitle"></p>
+			</div>
+		</section>
+
+		<section class="slide">
+		<div id="photos">
+
+			<div class="slide-content">
+				<p class="slide-title" id="pgTitle"></p>
+			</div>
+		</section>
+<section class="slide">
+		<div id="photos">
+			<img src="$("#photos").html(html);" alt="">
+
+			<div class="slide-content">
+				<p class="slide-title" id="pgTitle"></p>
+			</div>
+		</section>
+
+		<nav class="slider-nav">
+			<span class="prev-slide"></span>
+			<span class="next-slide"></span>
+		</nav>
+	</article>
+	<!-- end Slider -->
+
+				
+				
+	
+</main>
+</body>
+</html>
