@@ -1,0 +1,535 @@
+
+/* Full Screen jQuery Content Slider <https://github.com/jacobxperez/full-screen-jquery-content-slider>
+ * Copyright (C) 2019 Jacob Perez <jacobxperez@gmx.com>
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+------------------------------------------------------------------------------*/
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	font-size: inherit;
+	font-family: inherit;
+	line-height: inherit;
+	color: inherit;
+	vertical-align: baseline;
+	outline: 0;
+}
+
+body,
+html {
+	height: 100%;
+}
+
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
+	font-weight: 400;
+	color: #555;
+	line-height: 1.5;
+	background-color: #fff;
+	overflow: auto;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+	display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+}
+
+summary {
+	display: list-item;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+[hidden],
+audio:not([controls]),
+template {
+	display: none;
+	height: 0;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+embed,
+img,
+object {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+figure {
+	margin: 1.25em;
+}
+
+progress[value] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+dd,
+ol,
+ul {
+	padding-left: 2em;
+}
+
+dl,
+ol,
+ul {
+	margin-bottom: 1.5rem;
+	list-style-position: outside;
+}
+
+dl dl,
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+	margin: 0;
+}
+
+nav ol,
+nav ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+nav a {
+	display: block;
+}
+
+nav a:hover {
+	text-decoration: none;
+}
+
+hr {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	display: block;
+	height: 1px;
+	margin-bottom: 1.5rem;
+	border-top: .125em solid rgba(0, 0, 0, 0.3);
+}
+
+::-moz-selection {
+	background-color: #493d99;
+	color: #fff;
+	text-shadow: none;
+}
+
+::selection {
+	background-color: #493d99;
+	color: #fff;
+	text-shadow: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+	margin-bottom: 1.5rem;
+	text-rendering: optimizelegibility;
+}
+
+h1 {
+	margin-bottom: 1.125rem;
+	font-size: 300%;
+	line-height: 1.125;
+}
+
+h2 {
+	font-size: 200%;
+	line-height: 1.125;
+}
+
+h3 {
+	font-size: 150%;
+	line-height: 1.5;
+}
+
+h4 {
+	font-size: 125%;
+	line-height: 1.2;
+}
+
+h5 {
+	font-size: 112.5%;
+	line-height: 1.33333333;
+}
+
+h6 {
+	font-size: 100%;
+	line-height: 1.5;
+}
+
+p {
+	margin-bottom: 1.5rem;
+}
+
+b,
+strong {
+	font-weight: 700;
+}
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+	color: #06f;
+	cursor: pointer;
+}
+
+a:focus {
+	outline: thin dotted;
+	outline-offset: -2px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+dfn {
+	font-style: italic;
+}
+
+abbr[title],
+dfn[title] {
+	border-bottom: 0 none;
+	text-decoration: underline;
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
+mark {
+	background-color: #fc0;
+	color: #000;
+}
+
+small,
+sub,
+sup {
+	font-size: 87.5%;
+}
+
+sub,
+sup {
+	position: relative;
+	line-height: 0;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+.slider {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #555;
+}
+
+.slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.slide img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: default;
+}
+
+.slide-content {
+	position: absolute;
+	bottom: 30%;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	-webkit-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6), 0 0 5px rgba(0, 0, 0, 0.5);
+	-moz-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6), 0 0 5px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6), 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.slide-title {
+	font-size: 10vw;
+}
+
+.slider-nav {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 100%;
+	z-index: 10;
+}
+
+.next-slide,
+.prev-slide {
+	position: absolute;
+	display: inline-block;
+	width: 3.125em;
+	height: 3.125em;
+	line-height: 3.125;
+	margin: 0;
+	border: .125em solid white;
+	backface-visibility: hidden;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: white;
+	overflow: hidden;
+	cursor: pointer;
+	z-index: 20;
+	-webkit-transition: all .3s ease-in-out 0s;
+	-moz-transition: all .3s ease-in-out 0s;
+	-o-transition: all .3s ease-in-out 0s;
+	transition: all .3s ease-in-out 0s;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.prev-slide {
+	left: 2%;
+}
+
+.next-slide {
+	right: 2%;
+}
+
+.next-slide:hover,
+.prev-slide:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.next-slide::before,
+.prev-slide::before {
+	position: absolute;
+	top: 33%;
+	display: inline-block;
+	width: .8125em;
+	height: .8125em;
+	content: "";
+	border-left: .25em solid white;
+	border-top: .25em solid white;
+	backface-visibility: hidden;
+}
+
+.prev-slide::before {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	right: 25%;
+}
+
+.next-slide::before {
+	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	-o-transform: rotate(135deg);
+	transform: rotate(135deg);
+	left: 25%;
+}
+@media screen and (max-width: 42.5em) {
+	.next-slide,
+	.prev-slide {
+		display: none;
+	}
+}
+@media screen and (max-width: 61.25em) {
+	.slider {
+		max-height: 57.95918367vw;
+	}
+}
+@media screen and (min-height: 61.25em) {
+	.slider {
+		max-height: 57.95918367vw;
+	}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}body {margin: 0;
+background-color: #B6F0C8 ; 
+height: 500px; 
+background-position: center; 
+background-repeat: no-repeat; 
+background-size: cover; 
+}
+p {
+  font-family: Times New Roman;
+  font-size: 20px;
+}
+td{
+font-family: Times New Roman;
+  font-size: 20px;
+}
+th{
+font-family: Times New Roman;
+  font-size: 30px;
+}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+footer {
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #C70039;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+--------------------------
+/*TABLE*/
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 {
+  width: 100%;    
+  background-color:#C7EBD3 ;
+
